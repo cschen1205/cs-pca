@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuKit.ML.PCA", "SimuKit.ML.PCA\SimuKit.ML.PCA.csproj", "{55A3D453-A891-4B98-90D9-B24E8B700ED5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuKit.ML", "..\SimuKit.ML\SimuKit.ML.csproj", "{A0EEAC9F-645A-4C76-A960-31C79BA71417}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerics", "..\packages\MathNet.Numerics\src\Numerics\Numerics.csproj", "{B7CAE5F4-A23F-4438-B5BE-41226618B695}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55A3D453-A891-4B98-90D9-B24E8B700ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A3D453-A891-4B98-90D9-B24E8B700ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A3D453-A891-4B98-90D9-B24E8B700ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A3D453-A891-4B98-90D9-B24E8B700ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0EEAC9F-645A-4C76-A960-31C79BA71417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0EEAC9F-645A-4C76-A960-31C79BA71417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0EEAC9F-645A-4C76-A960-31C79BA71417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0EEAC9F-645A-4C76-A960-31C79BA71417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7CAE5F4-A23F-4438-B5BE-41226618B695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7CAE5F4-A23F-4438-B5BE-41226618B695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7CAE5F4-A23F-4438-B5BE-41226618B695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CAE5F4-A23F-4438-B5BE-41226618B695}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
