@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuKit.ML.PCA", "SimuKit.ML.PCA\SimuKit.ML.PCA.csproj", "{55A3D453-A891-4B98-90D9-B24E8B700ED5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCA", "PCA\PCA.csproj", "{55A3D453-A891-4B98-90D9-B24E8B700ED5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuKit.ML", "..\SimuKit.ML\SimuKit.ML.csproj", "{A0EEAC9F-645A-4C76-A960-31C79BA71417}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuKit.ML", "..\SimuKit.ML\csproj", "{A0EEAC9F-645A-4C76-A960-31C79BA71417}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerics", "..\packages\MathNet.Numerics\src\Numerics\Numerics.csproj", "{B7CAE5F4-A23F-4438-B5BE-41226618B695}"
 EndProject
