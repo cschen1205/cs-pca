@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>cs-pca</id>
+    <version>1.0.1</version>
+    <authors>cschen1205</authors>
+    <owners>cschen1205</owners>
+    <licenseUrl>https://github.com/cschen1205/cs-pca/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/cschen1205/cs-pca</projectUrl>
+    <iconUrl>https://rawgit.com/cschen1205/cs-pca/master/icon.jpg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Principal Component Analysis</description>
+    <releaseNotes>Principal Component Analysis in .NET 4.6.1</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>Principal Component Analysis, c-sharp</tags>
+    <dependencies>
+      
+    </dependencies>
+  </metadata>
+</package>

@@ -4,29 +4,11 @@ using System.Linq;
 using System.Text;
 using MathNet.Numerics.LinearAlgebra.Generic;
 using MathNet.Numerics.LinearAlgebra.Double;
-using SimuKit.ML.Lang;
 
-namespace SimuKit.ML.PCA
+namespace PCA
 {
-    public class PCADimReducer<T>
-        where T : DataRecord<double>, new()
+    public class PCADimReducer
     {
-        /// <summary>
-        /// Principal Component Analysis for Feature Transformation
-        /// If you do not perform mean normalization and feature scaling, PCA will rotate the data in a possibly undesired way.
-        /// </summary>
-        /// <param name="Xinput"></param>
-        /// <param name="K"></param>
-        /// <param name="U_reduce"></param>
-        /// <param name="variance_retained"></param>
-        /// <returns></returns>
-        public List<T> CompressDataWithMeanNormalizationAndFeaturesScaling(List<T> Xinput, int K, out Matrix<double> U_reduce, out double variance_retained)
-        {
-            DataTransformer<T> dt = new DataTransformer<T>();
-            dt.DoMeanNormalizationWithFeatureScaling(Xinput);
-            return CompressData(Xinput, K, out U_reduce, out variance_retained);
-        }
-
         /// <summary>
         /// Compress M input data points from original dimension N to new dimension K
         /// </summary>
@@ -35,16 +17,16 @@ namespace SimuKit.ML.PCA
         /// <param name="U_reduce">The MxK matrix, where M is the set of the data set (i.e. M = Xinput.Count), K is the new feature dimension count </param>
         /// <param name="variance_retained"></param>
         /// <returns></returns>
-        public List<T> CompressData(List<T> Xinput, int K, out Matrix<double> U_reduce, out double variance_retained)
+        public List<double[]> CompressData(List<double[]> Xinput, int K, out Matrix<double> U_reduce, out double variance_retained)
         {
-            int dimension = Xinput[0].Dimension;
+            int dimension = Xinput[0].Length;
             int m = Xinput.Count;
 
             int dimension2=dimension-1;
             Matrix<double> X = new DenseMatrix(m, dimension2, 0);
             for (int i = 0; i < m; ++i)
             {
-                DataRecord<double> rec = Xinput[i];
+                double[] rec = Xinput[i];
                 for (int d = 1; d < dimension; ++d)
                 {
                     X[i, d - 1] = rec[d];
@@ -75,11 +57,11 @@ namespace SimuKit.ML.PCA
             }
             variance_retained=Skk/Smm;
 
-            List<T> Zoutput = new List<T>();
+            List<double[]> Zoutput = new List<double[]>();
             for (int i = 0; i < m; ++i)
             {
-                T rec_x=Xinput[i];
-                T rec_z = new T();
+                double[] rec_x = Xinput[i];
+                double[] rec_z = new double[K+1];
                 
                 for (int d = 0; d < K; ++d)
                 {
@@ -101,14 +83,14 @@ namespace SimuKit.ML.PCA
         /// <param name="Zinput">The K-dimension input data point</param>
         /// <param name="U_reduce">The M x K matrix obtained from CompressData method</param>
         /// <returns>The reconstructed N-dimension output data point</returns>
-        public List<T> ReconstructData(List<T> Zinput, Matrix<double> U_reduce)
+        public List<double[]> ReconstructData(List<double[]> Zinput, Matrix<double> U_reduce)
         {
             int m=Zinput.Count;
-            int K=Zinput[0].Dimension-1;
+            int K=Zinput[0].Length-1;
             Matrix<double> Z = new DenseMatrix(m, K);
             for (int i = 0; i < m; ++i)
             {
-                DataRecord<double> rec_z=Zinput[i];
+                double[] rec_z= Zinput[i];
                 for(int d=0; d < K; ++d)
                 {
                     Z[i, d] = rec_z[d + 1];
@@ -118,10 +100,10 @@ namespace SimuKit.ML.PCA
             Matrix<double> X = Z.Multiply(U_reduce.Transpose());
 
             int N=X.ColumnCount;
-            List<T> Xoutput = new List<T>();
+            List<double[]> Xoutput = new List<double[]>();
             for (int i = 0; i < m; ++i)
             {
-                T rec_x = new T();
+                double[] rec_x = new double[N+1];
                 for (int d = 0; d < N; ++d)
                 {
                     rec_x[d+1] = X[i, d]; //index must start at 1!
@@ -132,16 +114,16 @@ namespace SimuKit.ML.PCA
             return Xoutput;
         }
 
-        public List<T> CompressData(List<T> Xinput, out Matrix<double> U_reduce, out int K, double variance_retained_threshold)
+        public List<double[]> CompressData(List<double[]> Xinput, out Matrix<double> U_reduce, out int K, double variance_retained_threshold)
         {
-            int dimension = Xinput[0].Dimension;
+            int dimension = Xinput[0].Length;
             int m = Xinput.Count;
 
             int N = dimension - 1;
             Matrix<double> X = new DenseMatrix(m, N, 0);
             for (int i = 0; i < m; ++i)
             {
-                DataRecord<double> rec = Xinput[i];
+                double[] rec = Xinput[i];
                 for (int d = 1; d < dimension; ++d)
                 {
                     X[i, d - 1] = rec[d];
@@ -178,11 +160,11 @@ namespace SimuKit.ML.PCA
                 }
             }
 
-            List<T> Zoutput = new List<T>();
+            List<double[]> Zoutput = new List<double[]>();
             for (int i = 0; i < m; ++i)
             {
-                T rec_x = Xinput[i];
-                T rec_z = new T();
+                double[] rec_x = Xinput[i];
+                double[] rec_z = new double[K+1];
 
                 for (int d = 0; d < K; ++d)
                 {
